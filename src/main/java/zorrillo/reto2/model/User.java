@@ -3,6 +3,9 @@ package zorrillo.reto2.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,6 +22,8 @@ public class User {
     private Integer id;
     private String identification;
     private String name;
+    private Date birthtDay;
+    private String monthBirthtDay;
     private String address;
     private String cellPhone;
     private String email;

@@ -32,6 +32,10 @@ public class UserRepository {
         return userCrudRepository.findAll();
     }
 
+    public Optional<User> getUser(Integer id){
+        return userCrudRepository.findById(id);
+    }
+
     public boolean existeEmail(String email){
         Optional<User> usuario=userCrudRepository.findByEmail(email);
         return !usuario.isEmpty();

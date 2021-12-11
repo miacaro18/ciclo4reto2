@@ -2,6 +2,7 @@ package zorrillo.reto2.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import zorrillo.reto2.model.User;
 import zorrillo.reto2.repository.UserRepository;
 
@@ -19,6 +20,10 @@ public class UserService {
 
     public List<User> getAll(){
         return userRepository.getAll();
+    }
+
+    public Optional<User> getUser(Integer id){
+        return userRepository.getUser(id);
     }
 
     public boolean existeEmail(String email){
@@ -61,6 +66,12 @@ public class UserService {
                 if (user.getName() != null){
                     userDb.get().setName(user.getName());
                 }
+                if (user.getBirthtDay() != null){
+                    userDb.get().setBirthtDay(user.getBirthtDay());
+                }
+                if (user.getMonthBirthtDay() != null) {
+                    userDb.get().setMonthBirthtDay(user.getMonthBirthtDay());
+                }
                 if (user.getAddress() != null){
                     userDb.get().setAddress(user.getAddress());
                 }
@@ -94,6 +105,6 @@ public class UserService {
             userRepository.delete(usuario.get());
             return true;
         }
-
     }
+
 }

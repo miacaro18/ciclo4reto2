@@ -64,7 +64,24 @@ public class OrderService {
         return order;
     }
 
+    //Consultar por zonas
     public List<Order> getOrderZone (String zone){
         return orderRepository.getOrderZone(zone);
     }
+
+    //Consultar por Id
+    public List<Order> getOrderId (Integer id){
+        return orderRepository.getOrderId(id);
+    }
+
+    //Consultar por estado y Id
+    public List<Order> getOrderStateId(String status ,Integer id){
+        return orderRepository.getOrderStateId(status, id);
+    }
+
+    //Consultar por fecha
+    public List<Order> ordersSalesManByDate(String dateStr, int id){
+        return orderRepository.ordersSalesManByDate(dateStr, id);
+    }
+
 }

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package zorrillo.reto2.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,25 +16,40 @@ import java.util.Optional;
 
 /**
  *
- * @author LUIS GERMAN ORTEGA M.
+ * @author Miguel_Castro
  */
 @Service
 public class UserService {
+    /**
+     * Autowired
+     */
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * User getAll
+     */
     public List<User> getAll(){
         return userRepository.getAll();
     }
 
+    /**
+     * User getId
+     */
     public Optional<User> getUser(Integer id){
         return userRepository.getUser(id);
     }
 
+    /**
+     * Exitencia Email
+     */
     public boolean existeEmail(String email){
         return userRepository.existeEmail(email);
     }
 
+    /**
+     * Autenticar Combinacion
+     */
     public User autenticateUser(String email, String password){
         Optional<User> usuario = userRepository.autenticateUser(email, password);
         if (usuario.isEmpty()){
@@ -39,6 +59,9 @@ public class UserService {
         }
     }
 
+    /**
+     * Registrar new
+     */
     public User create(User user){
         if (user.getId() == null){
             return user;
@@ -56,6 +79,9 @@ public class UserService {
         }
     }
 
+    /**
+     * Editar Update
+     */
     public User update(User user){
         if (user.getId() != null){
             Optional<User> userDb = userRepository.getUser(user.getId());
@@ -97,6 +123,9 @@ public class UserService {
         }
     }
 
+    /**
+     * Eliminar Delete
+     */
     public boolean delete(int userId){
         Optional<User> usuario = userRepository.getUser(userId);
         if(usuario.isEmpty()){
@@ -106,5 +135,4 @@ public class UserService {
             return true;
         }
     }
-
 }

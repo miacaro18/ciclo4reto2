@@ -55,8 +55,28 @@ public class OrderController {
         return orderService.delete(orderId);
     }
 
+    //Consultar por zonas
     @GetMapping("/zona/{zone}")
     public List<Order> getOrderZone(@PathVariable("zone") String zone){
         return orderService.getOrderZone(zone);
     }
+
+    //Consultar por Id
+    @GetMapping("/salesman/{id}")
+    public List<Order> getOrderId(@PathVariable("id") Integer id){
+        return orderService.getOrderId(id);
+    }
+
+    //Consultar por estado y Id
+    @GetMapping("/state/{status}/{id}")
+    public List <Order> getOrderStateId(@PathVariable("status") String status, @PathVariable("id") Integer id){
+        return orderService.getOrderStateId(status, id);
+    }
+
+    //Consultar por fecha
+    @GetMapping("/date/{date}/{id}")
+    public List <Order> ordersSalesManByDate(@PathVariable("date") String date, @PathVariable("id") int id){
+        return orderService.ordersSalesManByDate(date, id);
+    }
 }
+
